@@ -15,7 +15,7 @@
             font-family: -webkit-pictograph;
             }
             .background{
-                background-image: url(/weather.jpg);
+                background-image: url("http://res.cloudinary.com/dk7akak3h/image/upload/v1491174331/weather_mikj2w.jpg");
         
             }
             .button-custom{
