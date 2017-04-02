@@ -1,0 +1,54 @@
+      html, body, input, select, textarea
+            {
+                font-size: 1.05em !important;
+            }
+            .navbar.navbar-inverse{
+                color: white;
+            }
+            .alignment-top{
+            margin-top: 6rem;
+            }
+            .padding-text{
+                padding: 30px;
+            }
+            h3.font-family{
+            font-family: -webkit-pictograph;
+            }
+            .background{
+                background-image: url(/weather.jpg);
+        
+            }
+            .button-custom{
+                background-color: black;
+                color:white;
+            }
+            .button-custom:hover{
+                background-color:firebrick;
+                color:white;
+            }
+            .button-custom:active{
+                background-color: black;
+                color:white;
+            }
+            .navbar.navbar-inverse{
+                padding: 1rem;
+                
+            }
+            
+            .navbar-custom:hover{
+                background-color: black;
+                color:white; 
+            }
+            .navbar-custom:active{
+                background-color: black;
+                color:white; 
+            }
+            .navbar-brand.navbar-custom{
+                color:white;
+            }
+            .nav.navbar-custom{
+                color:white;
+            }
+            .navbar-inverse .navbar-nav>li>a {
+                color: white;
+            }
