@@ -1,33 +1,34 @@
-
-// Controllers
-
-weatherApp.controller('homeController', ['$scope', 'cityService', function($scope, cityService){
+// CONTROLLERS
+weatherApp.controller('homeController', ['$scope', 'cityService', function($scope, cityService) {
     
-        $scope.city= cityService.city;  
+    $scope.city = cityService.city;
     
-        $scope.$watch('city', function(){
-           cityService.city= $scope.city; 
-            
-        });
+    $scope.$watch('city', function() {
+       cityService.city = $scope.city; 
+    });
     
 }]);
 
-weatherApp.controller('forecastController', ['$scope', '$resource', '$routeParams', 'cityService', function($scope,  $resource, $routeParams, cityService){
+weatherApp.controller('forecastController', ['$scope', '$resource', '$routeParams', 'cityService', function($scope, $resource, $routeParams, cityService) {
     
-        $scope.city= cityService.city; 
+    $scope.city = cityService.city;
+    
     $scope.days = $routeParams.days || '2';
+    
+    $scope.weatherAPI = $resource("http://api.openweathermap.org/data/2.5/forecast/daily?APPID=636250d71762f8066de95056ffc68e7e", { callback: "JSON_CALLBACK" }, { get: { method: "JSONP" }});
+    
+    $scope.weatherResult = $scope.weatherAPI.get({ q: $scope.city, cnt: $scope.days });
+    
+    $scope.convertToFahrenheit = function(degK) {
         
-    $scope.weatherAPI = $resource("http://api.openweathermap.org/data/2.5/forecast/daily?APPID=636250d71762f8066de95056ffc68e7e", { callback: "JSON_CALLBACK"}, {get: {method: "JSONP" }});
+        return Math.round((1.8 * (degK - 273)) + 32);
+        
+    }
     
-    $scope.weatherResult=$scope.weatherAPI.get({ q: $scope.city, cnt: $scope.days});
-    
-    $scope.convertToFahrenheit = function(degk){
+    $scope.convertToDate = function(dt) { 
       
-        return Math.round((1.8 * (degk - 273)) + 32);
+        return new Date(dt * 1000);
+        
     };
     
-    $scope.convertToDate = function(dt){
-        
-        return new Date(dt * 1000);
-    }; 
 }]);
